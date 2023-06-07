@@ -1,0 +1,23 @@
+/home/stat_6/forf/eigenx.f:411.72:
+
+      PAUSE '50 iterations should never happen'                         
+                                                                        1
+Warning: Deleted feature: PAUSE statement at (1)
+   Type the name and format of the time series data.
+   Type the size (NX x NY) of station array.
+   Type the number of samples at each station.
+   First index of the input array: (1: time, 2: space).
+   Type smoothing option (0:No, M:Moving average lag).
+   Type cycle period for detrending (0: No).
+   Type the area adjustment option (0: No, 1: Yes).
+   Type the starting latitude and increment.
+   Type percent variance to be achieved.
+   Type pattern scaling factor.
+   type the number of eigenfunctions to be printed.
+   Type the PC normalization option (0: no, 1: yes)
+   Type the name and format of the EOF output file.
+   Type the name and format of the PC time series file.
+ # OF JOCOBI ROTATION :      699944
+
+         195
+rm: remove regular file ‘eigen’? 

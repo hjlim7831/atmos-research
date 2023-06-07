@@ -1,0 +1,220 @@
+#
+# This is the chemical species computed in chemical solver program
+# A is active species whose concentrations are computed
+# I is inactive species whose concentrations are fixed
+# NAME           MW  BKGAS(VMRAT)
+BEGIN
+A NO             30.01 00.0E+00
+A NO2            46.01 5.20E-08
+A NO3            62.01 0.00E+00
+A N2O5          108.01 0.00E+00
+A HONO           47.01 0.00E+00
+A HNO3           63.01 0.00E+00
+A HO2NO2         79.01 0.00E+00
+A O3P            16.00 0.00E+00
+A O3             48.00 0.00E+00
+A O1D            16.00 0.00E+00
+A OH             17.01 0.00E+00
+A HATOM           1.01 0.00E+00
+A HO2            33.01 0.00E+00
+A H2O2           34.02 0.00E+00
+A CO             28.01 1.10E-07
+A CH4            16.04 1.70E-06
+A CH3O2          47.03 0.00E+00
+A CH3O           31.00 0.00E+00
+A HCHO           20.00 0.00E+00
+A H2              2.02 6.00E-07
+I CO2            28.00 4.00E-02
+I H2O            18.00 1.50E-02
+I O2             16.00 0.21E+00
+I M              28.96 1.00E+00
+I N2             14.00 0.78E+00
+END
+#
+# The following block shows a set of kinetic chemical reactions for tropospheric chemistry
+# A is active, D is dead chemical reactions. 
+# A is only considered for chemical solving. 
+# Rate constants have form K = A * (300/T)**B * EXP(C/T)
+# Q denotes the number of additional reactions coefficients 
+# Fc is broadening factor for pressure dependent reactions
+# NMBR     A       B      C Q   Fc 
+BEGIN
+A   0   6.0E-34  2.3      0 0  .00   
+     O3P    +    O2     +    M      
+=1.00O3     +           + 
+A   1   1.8E-11  0.0    107 0  .00
+     O1D    +    N2     +
+=1.00O3P    +1.00N2
+A   2   3.2E-11  0.0     67 0  .00
+     O1D    +    O2     +    
+=1.00O3P    +1.00O2     +
+A   3   2.2E-10  0.0      0 0  .00 
+     O1D    +    H2O    +
+=2.00OH     +           + 
+A   4   5.4E-32  1.8      0 1  .55
+        7.5E-11  0.0      0 0  .00
+     HATOM  +    O2     +    
+=1.00HO2    +           +
+A   5   1.9E-12  0.0  -1000 0  .00
+     OH     +    O3     +
+=1.00HO2    +1.00O2     +
+A   6   7.7E-12  0.0  -2100 0  .00 
+     OH     +    H2     +
+=1.00H2O    +1.00HATOM  +
+A   7   4.8E-11  0.0    250 0  .00
+     OH     +    HO2    +
+=1.00H2O    +1.00O2     +
+A   8   2.9E-12  0.0   -160 0  .00
+     OH     +    H2O2   +
+=1.00HO2    +1.00H2O    +     
+A   9   7.4E-31  2.4      0 1  .90
+        4.5E-11  0.0      0 0  .00
+     OH     +    NO     +    
+=1.00HONO   +           +
+A  10   2.6E-30  2.9      0 1  .43
+        6.7E-11  0.6      0 0  .00
+     OH     +    NO2    +    
+=1.00HNO3   +           + 
+A  11   1.3E-13  1.0      0 0  .00
+     OH     +    CO     +
+=1.00HO2    +1.00CO2    +
+A  12   1.4E-14  0.0   -600 0  .00
+     HO2    +    O3     +
+=1.00OH     +2.00O2     +
+A  13   2.3E-13  0.0    600 2  .00
+        1.7E-33  0.0   1000 0  .00
+        1.4E-21  0.0   2200 0  .00
+     HO2    +    HO2    +
+=1.00H2O2   +1.00O2     +
+A  14   3.7E-12  0.0    240 0  .00
+     HO2    +    NO     +
+=1.00OH     +1.00NO2    +
+A  15   1.8E-31  3.2      0 1  .60
+        4.7E-12  1.4      0 0  .00
+     HO2    +    NO2    +    
+=1.00HO2NO2 +           +
+A  16   5.0E-06  0.0 -10000 1  .60
+        2.6E+15  0.0 -10900 0  .00
+     HO2NO2 +           +    
+=1.00HO2    +1.00NO2    +    
+A  17   4.0E-12  0.0      0 0  .00
+     HO2    +    NO3    +
+=1.00HNO3   +1.00O2     +
+A  18   1.8E-12  0.0  -1370 0  .00
+     O3     +    NO     +
+=1.00NO2    +1.00O2
+A  19   1.2E-13  0.0  -2450 0  .00
+     NO2    +    O3     +
+=1.00NO3    +1.00O2     +
+A  20   2.7E-30  3.4      0 1  .33
+        2.0E-12 -0.2      0 0  .00
+     NO3    +    NO2    +     
+=1.00N2O5   +           +
+A  21   1.0E-03  3.5 -11000 1  .33
+        9.7E+14 -0.1 -11080 0  .00
+     N2O5   +           +    
+=1.00NO3    +1.00NO2    +    
+A  22   2.0E-21  0.0      0 0  .00
+     N2O5   +    H2O    +
+=2.00HNO3   +           +
+A  23   2.3E-12  0.0  -1765 0  .00
+     CH4    +    OH     +
+=1.00CH3O2  +1.00H2O    +
+# Added reactions
+A  24   1.1E-10  0.0      0 0  .00
+     O1D    +    H2     +
+=1.00OH     +1.00HATOM  +
+A  25   1.4E-10  0.0   -470 0  .00
+   HATOM    +    O3     +
+=1.00O2     +1.00OH     +
+A  26   5.6E-12  0.0      0 0  .00
+   HATOM    +   HO2     +
+=1.00H2     +1.00O2     +
+A  27   7.2E-11  0.0      0 0  .00 
+   HATOM    +   HO2     +
+=1.00OH     +1.00OH     +
+A  28   2.4E-12  0.0      0 0  .00
+   HATOM    +   O2      +
+=1.00H2O    +1.00O3P    +
+A  29   2.3E-11  0.0    110 0  .00
+   OH       +  O3P      +
+=1.00HATOM  +1.00O2     +
+A  30   4.2e-12  0.0   -240 0  .00
+   OH       +   OH      +
+=1.00H2O    +1.00O3P    +
+A  31   6.9E-31  0.8      0 1  .50
+        2.6E-11  0.0      0 0  .00
+   OH       +   OH      +
+=1.00H2O2
+A  32   2.0E-11  0.0      0 0  .00
+   OH       +  NO3      +
+=1.00HO2    +1.00NO2    +
+A  33   1.8E-11  0.0   -390 0  .00
+   OH       + HONO      +
+=1.00H2O    +1.00NO2    +
+A  34   7.2E-15  0.0    785 3  .00
+        4.1E-16  0.0   1440 0  .00
+        1.9E-33  0.0    725 0  .00
+   OH       + HNO3      +
+=1.00H2O    +1.00NO3    +
+A  35   1.5E-12  0.0    360 0  .00
+   OH       + HO2NO2    +
+=1.00H2O    +1.00NO2    +1.00O2
+A  36   1.4E-12  0.0  -2000 0  .00
+ H2O2       +  O3P      +
+=1.00OH     +1.00HO2
+A  37   7.2E-14  0.0  -1080 0  .00
+ CH3O       +     O2    +
+=1.00HCHO   +1.00HO2    +
+A  38   4.2E-12  0.0    180 0  .00
+ CH3O2      +    NO     +
+=1.00CH3O   +1.00NO2    +
+A  39   8.6E-12  0.0     20 0  .00
+ HCHO       +    OH     +
+=1.00HO2    +1.00CO     +1.00H2O
+A  40   3.4E-11  0.0  -1600 0  .00
+ HCHO       +   O3P     +
+=1.00OH     +1.00HO2    +1.00CO
+END
+# Photolysis reactions for tropospheric chemistry
+BEGIN
+A   0   4.17E-04  0.0      0 0  .00
+     O3     +           +
+=1.00O3P    +1.00O2     +
+A   1   5.08E-05  0.0      0 0  .00
+     O3     +           +
+=1.00O1D    +1.00O2     +
+A   2   7.72E-06  0.0      0 0  .00
+     H2O2   +           +
+=2.00OH     +           +
+A   3   8.82E-03  0.0      0 0  .00
+     NO2    +           +
+=1.00NO     +1.00O3P
+A   4   2.84E-01  0.0      0 0  .00
+     NO3    +           +
+=1.00NO2    +1.00O3P
+A   5   2.49E-02  0.0      0 0  .00
+     NO3    +           +
+=1.00NO     +1.00O2     +
+A   6   5.04E-05  0.0      0 0  .00
+     N2O5   +           +
+=1.00NO2    +1.00NO3
+A   7   1.94E-03  0.0      0 0  .00
+     HONO   +           +
+=1.00OH     +1.00NO
+A   8   8.23E-07  0.0      0 0  .00
+     HNO3   +           +
+=1.00OH     +1.00NO2    +
+A   9   3.68E-06  0.0      0 0  .00
+     HO2NO2 +           +
+=1.00HO2    +1.00NO2    +
+A  10   1.84E-06  0.0      0 0  .00
+     HO2NO2 +           +
+=1.00OH     +1.00NO3    +
+A  11   3.29E-5   0.0      0 0  .00
+     HCHO   +           +
+=2.00HO2    +1.00CO
+A  12   4.40E-5   0.0      0 0  .00
+     HCHO   +           +
+=1.00CO     +1.00H2
+END

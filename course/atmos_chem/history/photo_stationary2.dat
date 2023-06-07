@@ -1,0 +1,36 @@
+#
+# This is the chemical species computed in chemical solver program
+# A is active species whose concentrations are computed
+# I is inactive species whose concentrations are fixed
+# NAME           MW  BKGAS(VMRAT)
+BEGIN
+A NO             30.01 5.00E-12
+A NO2            46.01 1.00E-11
+A O3P            16.00 0.00E+00
+A O3             48.00 0.00E+00
+I O2             16.00 0.21E+00
+I M              28.96 1.00E+00
+END
+#
+# The following block shows a set of kinetic chemical reactions for tropospheric chemistry
+# A is active, D is dead chemical reactions. 
+# A is only considered for chemical solving. 
+# Rate constants have form K = A * (300/T)**B * EXP(C/T)
+# Q denotes the number of additional reactions coefficients
+# Fc is broadening factor for pressure dependent reactions
+# NMBR     A       B      C Q   Fc 
+BEGIN
+A   1   6.00E-34  2.3      0 0  .00   
+     1O3P    +   1O2     +   1M      
+=1.000O3     +           + 
+A  19   1.80E-12  0.0  -1370 0  .00
+     1O3     +    1NO     +
+=1.000NO2    +1.000O2
+END
+
+# Photolysis reactions for tropospheric chemistry
+BEGIN
+A  28   1E-02  0.0      0 0  .00
+     1NO2    +           +
+=1.00NO     +1.00O3P
+END
